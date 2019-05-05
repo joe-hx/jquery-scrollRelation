@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<!-- scripting -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="../assets/scrollRelation.js"></script>
+	<script>
+		function myParallax(){
+			//adjust the header
+			var offsetPercent = $('#parallaxTop').scrollRelation('top') * 35;
+			$('#parallaxTop .parallax').css({top:offsetPercent + '%'});
+
+			//adjust the middle element
+			offsetPercent = ($('#parallaxMiddle').scrollRelation('middle', true) * -50) - 50;
+			$('#parallaxMiddle .parallax').css({top:offsetPercent + '%'});
+
+			//adjust the footer
+			offsetPercent = $('#parallaxBottom').scrollRelation('bottom') * 35;
+			$('#parallaxBottom .parallax').css({top:offsetPercent + '%'});
+		}
+		//events
+		$(window).on('scroll', myParallax).on('resize', myParallax);
+		$(myParallax);
+	</script>
+	<!-- styling -->
+	<style>
+		.parallaxParent {
+			position: relative;
+			overflow: hidden;
+		}
+		.parallax {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			will-change: top;
+		}
+		#parallaxTop {
+			height: 100vh;
+		}
+		#parallaxTop .parallax {
+			background: url('../assets/bg1.jpg') center center no-repeat;
+			background-size: cover;
+		}
+		#parallaxMiddle .parallax {
+			height: 200%;
+			background: url('../assets/bg2.jpg') center center no-repeat;
+			background-size: cover;
+		}
+		#parallaxBottom .parallax {
+			background: url('../assets/bg4.jpg') center center no-repeat;
+			background-size: cover;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="page-styling.css" />
+	<!-- meta -->
+	<title>Parallax Example | jQuery scrollRelation</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="keywords" content="scrollRelation parallax, parallax example, parallax website example, parallax demo" />
+	<meta name="description" content="Create custom parallax effects and more with the simple jQuery scrollRelation plugin." />
+</head>
+<body>
+<div id="parallaxTop" class="parallaxParent">
+	<div class="parallax"></div>
+	<div class="centerMe">
+		<h1>Parallax Example</h1>
+		<h3>Using jQuery scrollRelation</h3>
+	</div>
+</div>
+
+<section class="container p-3">
+	<h2>View Source</h2>
+	<p>View the page source for insight into how you can use the very simple calculation from the jQuery
+		<a href="https://github.com/joe-hx/jquery-scrollRelation">scrollRelation</a> plugin to create your own
+		custom parallax effects.</p>
+	<p>The effects on this page are completely dynamic and accommodate the size of the content, but this code might
+		not work for every case or screen size as-is.</p>
+	<p>Each background is attached to a moving .parallax div with an initial position set, and a script calculation
+		moving the element to the maximum desired offset.</p>
+	<p><a href="https://github.com/joe-hx/jquery-scrollRelation">scrollRelation</a> takes care of scaling that offset
+		when you scroll!</p>
+</section>
+<section id="parallaxMiddle" class="parallaxParent">
+	<div class="parallax"></div>
+	<div class="container p-3">
+		<h2>Documentation</h2>
+		<p>If you want to know more, you should really check out the
+			<a href="https://github.com/joe-hx/jquery-scrollRelation">scrollRelation GitHub repository</a>.</p>
+		<p>&nbsp;</p>
+		<p>The repository page should always be the go-to source for documentation, issue tracking, feature requests,
+			and really anything you want to know about this plugin.</p>
+		<p>&nbsp;</p>
+	</div>
+</section>
+<section class="container p-3">
+	<h2>Parallax</h2>
+	<p>Did you know the term parallax is hundreds of years old?</p>
+	<p>The concept is certainly older!</p>
+	<p>It describes a basic 2-dimensional visual queue that we unconsciously translate into 3-dimensional space.</p>
+	<p>When we see something moving slower, it automatically makes us think it is farther away.</p>
+	<p>Especially if details of the slower image are smaller, it encourages us to believe there is depth to what we're seeing.</p>
+	<p>There are lots more visual queues like this to learn, and I wouldn't be surprised if more start
+		gaining popularity for the web like parallax has!</p>
+</section>
+
+<section id="parallaxBottom" class="parallaxParent">
+	<div class="parallax"></div>
+	<div class="container text-white p-3">
+		<h2>Lorem Ipsum</h2>
+		<p>Ah, the old "Lorem ipsum dolor sit amet...".</p>
+		<p>Who can make a demonstration page without it?</p>
+		<p>Sure, this page is all filler text, but the text really gives you something to focus on
+			to realize the parallax effect.</p>
+		<p>Without further ado, please enjoy 5 paragraphs of lorem ipsum:</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet finibus sapien. Pellentesque fringilla, nulla nec eleifend placerat, libero nibh sagittis lacus, sed facilisis nisl arcu ut eros. Suspendisse sed metus ac justo ornare ullamcorper et quis turpis. Aenean metus nulla, condimentum ac erat eu, convallis varius justo. Donec blandit ac enim quis congue. Praesent vitae lorem non magna fringilla mattis ut a leo. Proin efficitur urna nulla, in scelerisque ligula finibus sed. Vivamus tellus tortor, blandit sed nibh tincidunt, dictum accumsan ligula. Quisque blandit tincidunt ipsum, a bibendum est iaculis vel. Nulla congue, est eget mattis hendrerit, ante augue feugiat risus, at congue nulla felis at felis. Vivamus rhoncus tortor ut velit blandit hendrerit ac sed neque. In pharetra, metus a varius semper, lacus massa condimentum nunc, at bibendum enim eros a arcu.</p>
+		<p>Nulla eu imperdiet nulla. Proin ullamcorper, neque vel gravida tempus, dui sem ultrices mauris, ac egestas nunc odio a odio. Pellentesque in porta turpis. Donec scelerisque neque eget dolor rhoncus, non varius metus tempus. Ut tristique, nisl vel volutpat sollicitudin, sapien velit fermentum leo, nec iaculis leo neque id mi. Aliquam non dictum turpis, vel fermentum massa. Integer varius ex sit amet finibus egestas. Quisque sed lacus in ipsum interdum pellentesque id volutpat lorem. Suspendisse sit amet vehicula nisl, eget molestie nisl. Proin et interdum lectus. Nullam rutrum elementum sapien eget semper. Curabitur quis sem in libero condimentum egestas sed nec nunc.</p>
+		<p>Etiam fermentum tellus et cursus vulputate. Morbi dictum elit rutrum, facilisis quam vitae, dapibus nibh. Sed id ipsum purus. Quisque porttitor orci eget ante commodo, in tempor dui mattis. Phasellus vel efficitur nisl, et molestie purus. In eu lacinia eros, non facilisis ante. Nunc eget ante consectetur, finibus purus sed, hendrerit turpis. Integer auctor lorem velit, ac aliquet purus iaculis non. Ut ac mi et felis egestas euismod et sed lorem.</p>
+		<p>Quisque elementum, ante sit amet iaculis tempus, tortor dui finibus purus, non malesuada augue lorem id lorem. Curabitur in pulvinar nulla. Ut condimentum, lacus ac molestie dictum, mi felis posuere urna, eu maximus turpis lectus in enim. Pellentesque ullamcorper nunc id magna ornare, eu tempor nunc maximus. Pellentesque consectetur ante purus, non lobortis arcu sollicitudin rutrum. Sed eleifend et enim sit amet egestas. Donec vitae tellus justo. Vestibulum eget aliquam sapien.</p>
+		<p>Vivamus vitae efficitur mi. In volutpat lacinia purus, nec sollicitudin est semper ac. Proin condimentum consequat sem in dictum. Nulla nisl metus, auctor ac leo ac, iaculis interdum odio. Suspendisse eget gravida justo. Fusce eget accumsan arcu. Phasellus iaculis dolor ante, nec egestas lectus euismod vitae. Fusce eget odio sed magna rutrum fringilla. Sed dui erat, eleifend eget sollicitudin vel, dapibus nec lectus. Ut ac quam efficitur, fringilla urna vitae, volutpat felis. Nunc hendrerit tempor cursus. Nullam tempus felis quis neque hendrerit, fringilla convallis velit fermentum. Morbi vehicula, purus eget porttitor faucibus, enim lorem iaculis orci, eu scelerisque quam mauris a tellus. Maecenas faucibus mi in sapien posuere, nec rutrum ex iaculis. Duis magna lacus, faucibus ac posuere hendrerit, aliquam id orci.</p>
+	</div>
+</section>
+</body>
+</html>
