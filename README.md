@@ -14,6 +14,9 @@ it in your projects ***after jQuery***.
 ```
 <script type="text/javascript" src="/path/to/scrollRelation.js"></script>
 ```
+## Examples
+Check out the examples index at the 
+[demonstration page](https://scrollrelation.demonstration.page).
 
 ## Documentation
 The simplest usage is to call the function from a jQuery selector
@@ -52,6 +55,6 @@ calculations by providing `true` for the second parameter:
 $('#myElement').scrollRelation('middle', true);
 ```
 ## Roadmap
-* Provide examples
+* Provide more examples
 * Enhance documentation
 * Create a distributed package (npm, cdn, etc)
