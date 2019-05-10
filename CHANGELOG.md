@@ -1,3 +1,6 @@
+# 2.0.2
+### Fixes
+* measuring window's outerHeight for better mobile compatibility
 # 2.0.1
 ### Fixes
 * included onload event for internal size/scroll tracking
