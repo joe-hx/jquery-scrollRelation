@@ -71,7 +71,7 @@ $('#myElement').scrollRelation({
 ```
 * The `bottom` option will return `0` when the bottom of the viewport
 and the bottom of your element are aligned.
-> Originally intended for tweening header elements or triggers
+> Originally intended for tweening footer elements or triggers
 at the screen's bottom
 ### Element Height
 By default, jQuery's `outerHeight()` function is used to determine
