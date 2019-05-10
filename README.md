@@ -8,11 +8,11 @@ custom parallax interactions, scale properties, or even tween
 animations.
 
 ## Quick Start
-> Documentation, examples, and distribution are in the works.
-For now, download the `scrollRelation.js` file and include 
+> Distribution is in the works.
+For now, download the `jquery.scrollRelation.min.js` file and include 
 it in your projects ***after jQuery***.
 ```
-<script type="text/javascript" src="/path/to/scrollRelation.js"></script>
+<script type="text/javascript" src="/path/to/jquery.scrollRelation.min.js"></script>
 ```
 ## Examples
 Check out the examples index at the 
@@ -31,30 +31,65 @@ You will get a **floating-point number** between `-1` and `1`.
 with your target *(in this case, the middle of the viewport and
 the middle of your element)*
 * A return value of `-1` means the element is completely
-**below the viewport**
-* A return value of `1` means the element is completely
 **above the viewport**
+* A return value of `1` means the element is completely
+**below the viewport**
+> The values reflect that lower numbers of pixels equal a higher 
+position  in the document, complimenting many custom effect 
+calculations.
+### Inversion
+If the opposite return value is more beneficial to your
+calculations, provide an `invert` property in the config object
+like shown below:
 ```
-$('#myElement').scrollRelation('top');
+$('#myElement').scrollRelation({
+    invert:true
+});
+``` 
+### Relation Options
+```
+$('#myElement').scrollRelation({
+    relation:'middle'
+});
+```
+* The `middle` value *(or omitting the `relation` option)* will
+return `0` when the middle of the viewport and the middle of
+your element are aligned.
+```
+$('#myElement').scrollRelation({
+    relation:'top'
+});
 ```
 * The `top` option will return `0` when the top of the viewport and
 the top of your element are aligned.
-> **This is intended for header elements.** Using with mid-page 
-elements results in unbalanced ranges
+> Originally intended for tweening header elements or triggers
+at the screen's top
 ```
-$('#myElement').scrollRelation('bottom');
+$('#myElement').scrollRelation({
+    relation:'bottom'
+});
 ```
 * The `bottom` option will return `0` when the bottom of the viewport
 and the bottom of your element are aligned.
-> **This is intended for footer elements.** Using with mid-page 
-elements results in unbalanced ranges
-
-* You can **invert the return value** to work better with your
-calculations by providing `true` for the second parameter:
+> Originally intended for tweening header elements or triggers
+at the screen's bottom
+### Element Height
+By default, jQuery's `outerHeight()` function is used to determine
+the height of your element. If this does not meet your needs,
+simply supply your own function in the config object as 
+demonstrated below:
 ```
-$('#myElement').scrollRelation('middle', true);
+$('#myElement').scrollRelation({
+    height:function(){
+        return this.innerHeight();
+    }
+});
 ```
+> In the above height function, `this` is the jQuery object created
+by your selector. Return the number of pixels to be used in the
+scrollRelation calculation.
 ## Roadmap
 * Provide more examples
-* Enhance documentation
 * Create a distributed package (npm, cdn, etc)
+* Create more options, such as caching element size to further
+improve performance
