@@ -3,20 +3,22 @@
 <head>
 	<!-- scripting -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="../assets/jquery.scrollRelation.min.js"></script>
+	<script src="../assets/jquery.scrollRelation.min.js?v=2.0.2"></script>
 	<script>
 		function myParallax(){
-			//adjust the header
-			var offsetPercent = $('#parallaxTop').scrollRelation({relation:'top',invert:true}) * 35;
-			$('#parallaxTop .parallax').css({top:offsetPercent + '%'});
+			requestAnimationFrame(function(){
+				//adjust the header
+				var offsetPercent = $('#parallaxTop').scrollRelation({relation:'top', invert:true}) * 35;
+				$('#parallaxTop .parallax').css({top:offsetPercent + '%'});
 
-			//adjust the middle element
-			offsetPercent = ($('#parallaxMiddle').scrollRelation() * -50) - 50;
-			$('#parallaxMiddle .parallax').css({top:offsetPercent + '%'});
+				//adjust the middle element
+				offsetPercent = ($('#parallaxMiddle').scrollRelation() * -50) - 50;
+				$('#parallaxMiddle .parallax').css({top:offsetPercent + '%'});
 
-			//adjust the footer
-			offsetPercent = $('#parallaxBottom').scrollRelation({relation:'bottom',invert:true}) * 35;
-			$('#parallaxBottom .parallax').css({top:offsetPercent + '%'});
+				//adjust the footer
+				offsetPercent = $('#parallaxBottom').scrollRelation({relation:'bottom', invert:true}) * 35;
+				$('#parallaxBottom .parallax').css({top:offsetPercent + '%'});
+			});
 		}
 		//events
 		$(window).on('scroll', myParallax).on('resize', myParallax);

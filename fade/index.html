@@ -3,25 +3,27 @@
 <head>
 	<!-- scripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="../assets/jquery.scrollRelation.min.js"></script>
+	<script src="../assets/jquery.scrollRelation.min.js?v=2.0.2"></script>
 	<script>
 		function myScroll(){
-			//fade 1
-			$('.bg1').css({opacity:$('.trigger1').scrollRelation()});
+			requestAnimationFrame(function(){
+				//fade 1
+				$('.bg1').css({opacity:$('.trigger1').scrollRelation()});
 
-			//fade 2
-			$('.bg2').css({opacity:$('.trigger2').scrollRelation()});
+				//fade 2
+				$('.bg2').css({opacity:$('.trigger2').scrollRelation()});
 
-			//fade 3
-			$('.bg3').css({opacity:$('.trigger3').scrollRelation()});
+				//fade 3
+				$('.bg3').css({opacity:$('.trigger3').scrollRelation()});
 
-			//fade 4
-			var screl = $('.trigger4').scrollRelation();
-			$('.bg4').css({opacity:screl});
+				//fade 4
+				var screl = $('.trigger4').scrollRelation();
+				$('.bg4').css({opacity:screl});
 
-			//scroll everything when we reach the end
-			if(screl > 0) screl = 0;
-			$('.bg').css({top:screl * $(window).height()});
+				//scroll when we reach the end
+				if(screl > 0) screl = 0;
+				$('.bg5').css({top:screl * $(window).outerHeight()});
+			});
 		}
 		//events
 		$(window).on('scroll', myScroll).on('resize', myScroll);
@@ -34,11 +36,12 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 100%;
+			height: 100vh;
 			background-position: center center;
 			background-size: cover;
 			background-repeat: no-repeat;
 			z-index: -1;
+			will-change: opacity, top;
 		}
 
 		div.bg::before {
