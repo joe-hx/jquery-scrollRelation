@@ -1,5 +1,5 @@
 /*
-version 2.0.0
+version 2.0.1
 Copyright (c) 2019 joe-hx
 https://github.com/joe-hx/jquery-scrollRelation
 MIT License
@@ -57,11 +57,13 @@ MIT License
 	//store viewport data
 	var screldat = {window:$(window)};
 	
-	//only do viewport calcs now & on resize event
+	//only do viewport calcs now, onload & on resize event
 	screldat.window.on('resize', screlsize);
 	screlsize();
+	$(screlsize);
 	
-	//only get viewport scroll position now & once per scroll event
+	//only get viewport scroll position now, onload & once per scroll event
 	screldat.window.on('scroll', screlpos);
 	screlpos();
+	$(screlpos);
 })(jQuery);

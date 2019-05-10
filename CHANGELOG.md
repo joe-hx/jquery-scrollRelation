@@ -1,3 +1,6 @@
+# 2.0.1
+### Fixes
+* included onload event for internal size/scroll tracking
 # 2.0.0
 > Major Rewrite
 ### Improvements
