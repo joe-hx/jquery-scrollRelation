@@ -23,6 +23,9 @@
 			if(screl > 0) screl = 0;
 			$('.bg').css({top:screl * $(window).height()});
 		}
+		//events
+		$(window).on('scroll', myScroll).on('resize', myScroll);
+		$(myScroll);
 	</script>
 	<!-- styling -->
 	<style>
@@ -96,10 +99,5 @@
 	</section>
 
 </div>
-<script>
-	//events
-	$(window).on('scroll', myScroll).on('resize', myScroll);
-	$(myScroll);
-</script>
 </body>
 </html>

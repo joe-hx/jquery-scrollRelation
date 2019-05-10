@@ -18,6 +18,9 @@
 			offsetPercent = $('#parallaxBottom').scrollRelation({relation:'bottom',invert:true}) * 35;
 			$('#parallaxBottom .parallax').css({top:offsetPercent + '%'});
 		}
+		//events
+		$(window).on('scroll', myParallax).on('resize', myParallax);
+		$(myParallax);
 	</script>
 	<!-- styling -->
 	<style>
@@ -118,10 +121,5 @@
 		<p>Vivamus vitae efficitur mi. In volutpat lacinia purus, nec sollicitudin est semper ac. Proin condimentum consequat sem in dictum. Nulla nisl metus, auctor ac leo ac, iaculis interdum odio. Suspendisse eget gravida justo. Fusce eget accumsan arcu. Phasellus iaculis dolor ante, nec egestas lectus euismod vitae. Fusce eget odio sed magna rutrum fringilla. Sed dui erat, eleifend eget sollicitudin vel, dapibus nec lectus. Ut ac quam efficitur, fringilla urna vitae, volutpat felis. Nunc hendrerit tempor cursus. Nullam tempus felis quis neque hendrerit, fringilla convallis velit fermentum. Morbi vehicula, purus eget porttitor faucibus, enim lorem iaculis orci, eu scelerisque quam mauris a tellus. Maecenas faucibus mi in sapien posuere, nec rutrum ex iaculis. Duis magna lacus, faucibus ac posuere hendrerit, aliquam id orci.</p>
 	</div>
 </section>
-<script>
-	//events
-	$(window).on('scroll', myParallax).on('resize', myParallax);
-	$(myParallax);
-</script>
 </body>
 </html>
