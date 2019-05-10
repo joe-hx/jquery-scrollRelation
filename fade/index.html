@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+	<!-- scripts -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="../assets/jquery.scrollRelation.min.js"></script>
+	<script>
+		function myScroll(){
+			//fade 1
+			$('.bg1').css({opacity:$('.trigger1').scrollRelation()});
+
+			//fade 2
+			$('.bg2').css({opacity:$('.trigger2').scrollRelation()});
+
+			//fade 3
+			$('.bg3').css({opacity:$('.trigger3').scrollRelation()});
+
+			//fade 4
+			var screl = $('.trigger4').scrollRelation();
+			$('.bg4').css({opacity:screl});
+
+			//scroll everything when we reach the end
+			if(screl > 0) screl = 0;
+			$('.bg').css({top:screl * $(window).height()});
+		}
+	</script>
+	<!-- styling -->
+	<style>
+		div.bg {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: -1;
+		}
+
+		div.bg::before {
+			content: "";
+			background-color: rgba(0, 0, 0, 0.5);
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- meta -->
+	<title>Fade Example | jQuery scrollRelation</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="keywords" content="scrollRelation fade, fading background example, multiple fading backgrounds, background tweening, scroll tween" />
+	<meta name="description" content="Create custom transition effects and more with the simple jQuery scrollRelation plugin." />
+</head>
+<body>
+<div class="bg bg5" style="background-image:url('../assets/abstract-art-bright-2110951.jpg');"></div>
+<div class="bg bg4" style="background-image:url('../assets/cascade-clouds-cool-wallpaper-210186.jpg');"></div>
+<div class="bg bg3" style="background-image:url('../assets/beautiful-blur-bright-326055.jpg');"></div>
+<div class="bg bg2" style="background-image:url('../assets/clouds-colors-cropland-1558732.jpg');"></div>
+<div class="bg bg1" style="background-image:url('../assets/cosmos-dark-evening-934964.jpg');"></div>
+
+<div class="container d-flex flex-column text-white">
+
+	<section class="min-vh-100 justify-content-center text-right d-flex flex-column">
+		<h1>Simply Powerful</h1>
+		<p>Just one simple function can do so much for your page.</p>
+	</section>
+
+	<section class="trigger1 min-vh-100 justify-content-center text-right d-flex flex-column">
+		<h1>Explore Possibility</h1>
+		<p>Experiment with multiplying CSS properties.</p>
+	</section>
+
+	<section class="trigger2 min-vh-100 justify-content-center text-right d-flex flex-column">
+		<h1>Create Inspiration</h1>
+		<p>What inspires you will inspire others to try new things.</p>
+	</section>
+
+	<section class="trigger3 min-vh-100 justify-content-center text-right d-flex flex-column">
+		<h1>Functional Freedom</h1>
+		<p>Innovation in a simple package means nothing gets in your way.</p>
+	</section>
+
+	<section class="trigger4 min-vh-100 justify-content-center text-right d-flex flex-column">
+		<h1>Uniquely You</h1>
+		<p>Discover what you're capable of and stand out with custom effects.</p>
+	</section>
+
+	<section class="min-vh-100 justify-content-center text-right d-flex flex-column text-dark">
+		<h1>Collaboration Conscious</h1>
+		<p>Want to add your own example? <a href="https://github.com/joe-hx/jquery-scrollRelation">Check this out on GitHub.</a></p>
+	</section>
+
+</div>
+<script>
+	//events
+	$(window).on('scroll', myScroll).on('resize', myScroll);
+	$(myScroll);
+</script>
+</body>
+</html>

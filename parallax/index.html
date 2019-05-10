@@ -3,24 +3,21 @@
 <head>
 	<!-- scripting -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="../assets/scrollRelation.js"></script>
+	<script src="../assets/jquery.scrollRelation.min.js"></script>
 	<script>
 		function myParallax(){
 			//adjust the header
-			var offsetPercent = $('#parallaxTop').scrollRelation('top') * 35;
+			var offsetPercent = $('#parallaxTop').scrollRelation({relation:'top',invert:true}) * 35;
 			$('#parallaxTop .parallax').css({top:offsetPercent + '%'});
 
 			//adjust the middle element
-			offsetPercent = ($('#parallaxMiddle').scrollRelation('middle', true) * -50) - 50;
+			offsetPercent = ($('#parallaxMiddle').scrollRelation() * -50) - 50;
 			$('#parallaxMiddle .parallax').css({top:offsetPercent + '%'});
 
 			//adjust the footer
-			offsetPercent = $('#parallaxBottom').scrollRelation('bottom') * 35;
+			offsetPercent = $('#parallaxBottom').scrollRelation({relation:'bottom',invert:true}) * 35;
 			$('#parallaxBottom .parallax').css({top:offsetPercent + '%'});
 		}
-		//events
-		$(window).on('scroll', myParallax).on('resize', myParallax);
-		$(myParallax);
 	</script>
 	<!-- styling -->
 	<style>
@@ -121,5 +118,10 @@
 		<p>Vivamus vitae efficitur mi. In volutpat lacinia purus, nec sollicitudin est semper ac. Proin condimentum consequat sem in dictum. Nulla nisl metus, auctor ac leo ac, iaculis interdum odio. Suspendisse eget gravida justo. Fusce eget accumsan arcu. Phasellus iaculis dolor ante, nec egestas lectus euismod vitae. Fusce eget odio sed magna rutrum fringilla. Sed dui erat, eleifend eget sollicitudin vel, dapibus nec lectus. Ut ac quam efficitur, fringilla urna vitae, volutpat felis. Nunc hendrerit tempor cursus. Nullam tempus felis quis neque hendrerit, fringilla convallis velit fermentum. Morbi vehicula, purus eget porttitor faucibus, enim lorem iaculis orci, eu scelerisque quam mauris a tellus. Maecenas faucibus mi in sapien posuere, nec rutrum ex iaculis. Duis magna lacus, faucibus ac posuere hendrerit, aliquam id orci.</p>
 	</div>
 </section>
+<script>
+	//events
+	$(window).on('scroll', myParallax).on('resize', myParallax);
+	$(myParallax);
+</script>
 </body>
 </html>
