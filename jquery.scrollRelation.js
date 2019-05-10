@@ -1,5 +1,5 @@
 /*
-version 2.0.1
+version 2.0.2
 Copyright (c) 2019 joe-hx
 https://github.com/joe-hx/jquery-scrollRelation
 MIT License
@@ -43,7 +43,7 @@ MIT License
 	
 	//calculate viewport size data
 	function screlsize(){
-		screldat.viewHeight = screldat.window.height();
+		screldat.viewHeight = screldat.window.outerHeight();
 		screldat.viewHeightHalf = screldat.viewHeight / 2;
 	}
 	
