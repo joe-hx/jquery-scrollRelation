@@ -1,3 +1,9 @@
+# 2.1.0
+### New Features
+* added a new `contain` relation, see readme for explanation
+### Improvements
+* as a shortcut for the config object, you can now provide
+a string that will serve as the `relation` parameter
 # 2.0.2
 ### Fixes
 * measuring window's outerHeight for better mobile compatibility

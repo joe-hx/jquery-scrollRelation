@@ -1,13 +1,18 @@
 /*
-version 2.0.2
+version 2.1.0
 Copyright (c) 2019 joe-hx
 https://github.com/joe-hx/jquery-scrollRelation
 MIT License
 */
 (function($){
 	$.fn.scrollRelation = function(config){
-		config = config || {};
-		//always get these so they can change
+		var configType = typeof config;
+		if(configType == 'string')
+			config = {relation:config};
+		else if(configType != 'object')
+			config = {};
+		
+		//always get these
 		var thisHeight = config.height ? config.height.call(this) : this.outerHeight();
 		var thisPositionTop = this.offset().top;
 		
@@ -32,7 +37,10 @@ MIT License
 			var thisHeightHalf = thisHeight / 2;
 			var thisPositionMiddle = thisPositionTop + thisHeightHalf;
 			var targetDifference = screldat.viewPositionMiddle - thisPositionMiddle;
-			var multiplierTillGone = targetDifference / (screldat.viewHeightHalf + thisHeightHalf);
+			if(config.relation=='contain')
+				var multiplierTillGone = targetDifference / Math.abs(thisHeightHalf - screldat.viewHeightHalf);
+			else
+				var multiplierTillGone = targetDifference / (screldat.viewHeightHalf + thisHeightHalf);
 		}
 		if(multiplierTillGone > 1) multiplierTillGone = 1;
 		if(multiplierTillGone < -1) multiplierTillGone = -1;
