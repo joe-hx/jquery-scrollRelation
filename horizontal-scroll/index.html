@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="../assets/jquery.scrollRelation.min.js?v=2.1.0"></script>
+	<script>
+		function myScroll(){
+			var screl = $('.horizontal').scrollRelation('contain');
+			var $scrollwrapper = $('.scrollwrapper');
+
+			//fixed when covering view
+			$scrollwrapper.toggleClass('fixed', screl < 1 && screl > -1);
+
+			//scroll horizontally
+			var maxMove = $scrollwrapper.width() - $(window).width();
+			var halfMax = maxMove / 2
+			$scrollwrapper.css({left:(screl * halfMax) - halfMax});
+
+			//lock to bottom to scroll up
+			$scrollwrapper.toggleClass('bottom', screl <= -1);
+		}
+		$(window).on('scroll', myScroll);
+		//onload function:
+		$(function(){
+			//color the pages randomly
+			$('.full').each(function(){
+				$(this).css('backgroundColor', '#' + randomColor());
+			})
+			//initialize the first scroll function
+			myScroll();
+		});
+		var hue = 0;
+		function randomColor(){
+			var h, s = 0.6, v = 0.75, r, g, b, i, f, p, q, t;
+			do {
+				h = Math.random();
+			} while(Math.abs(hue - h) < 0.09);
+			hue = h;
+			i = Math.floor(h * 6);
+			f = h * 6 - i;
+			p = v * (1 - s);
+			q = v * (1 - f * s);
+			t = v * (1 - (1 - f) * s);
+			switch(i % 6){
+				case 0:r = v, g = t, b = p;break;
+				case 1:r = q, g = v, b = p;break;
+				case 2:r = p, g = v, b = t;break;
+				case 3:r = p, g = q, b = v;break;
+				case 4:r = t, g = p, b = v;break;
+				case 5:r = v, g = p, b = q;break;
+			}
+			r = Math.round(r * 255).toString(16);
+			g = Math.round(g * 255).toString(16);
+			b = Math.round(b * 255).toString(16);
+			if(r.length==1) r = '0' + r;
+			if(g.length==1) g = '0' + g;
+			if(b.length==1) b = '0' + b;
+			return r + g + b;
+		}
+	</script>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		.full {
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-family: Arial, sans-serif;
+			color:#f6f6f6;
+		}
+		.horizontal {
+			position:relative;
+			width: 100%;
+			height: 200vw;/* height affects horizontal scroll speed */
+			min-height: 300vh;
+			overflow: hidden;
+		}
+		.scrollwrapper {
+			position: absolute;
+			left:0;
+			display:flex;
+		}
+		.scrollwrapper .full {
+			min-width: 100vw;
+		}
+		.scrollwrapper.fixed {
+			position: fixed;
+			top: 0;
+		}
+		.scrollwrapper.bottom {
+			bottom: 0;
+		}
+	</style>
+	<title>Horizontal Scroll Example | jQuery scrollRelation</title>
+</head>
+<body>
+	<div class="full">
+		<h2>page 1</h2>
+	</div>
+	<div class="full">
+		<h2>page 2</h2>
+	</div>
+	<div class="full">
+		<h2>page 3</h2>
+	</div>
+	<div class="horizontal">
+		<div class="scrollwrapper">
+			<div class="full">
+				<h2>page 4</h2>
+			</div>
+			<div class="full">
+				<h2>page 5</h2>
+			</div>
+			<div class="full">
+				<h2>page 6</h2>
+			</div>
+		</div>
+	</div>
+	<div class="full">
+		<h2>page 7</h2>
+	</div>
+	<div class="full">
+		<h2>page 8</h2>
+	</div>
+	<div class="full">
+		<h2>page 9</h2>
+	</div>
+</body>
+</html>
+<!-- todo seo & explanatory meta & content, finish tests -->
